@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+
+@utility ltr-text {
+  direction: ltr;
+  text-align: left;
+}
+
+@utility container {
+  @apply mx-auto px-4 lg:px-2.5;
+}
+
+@theme {
+  --color-darkText: #003464;
+  --color-darkPrimary: #151d32;
+  --color-lightText: #f3f4f7;
+  --color-lightPrimary: #f3fafe;
+  --color-stoneCard: #e1e9ee;
+  --color-gradientCostum: linearGradient(
+    90deg,
+    rgba(54, 54, 54, 0) 0%,
+    #7e7e7e 48.5%,
+    rgba(54, 54, 54, 0) 100%
+  );
+
+  --shadow-costum: 0px 2px 7px 0px #00000026;
+  --shadow-dark: 0px 4px 10px 0px #a6a5a526;
+  --radius-4xl: 2rem;
+  --font-EstedadThin: "Estedad Thin", "sans-serif";
+  --font-EstedadLight: "Estedad Light", "sans-serif";
+  --font-EstedadMedium: "Estedad Medium", "sans-serif";
+  --font-EstedadBold: "Estedad Bold", "sans-serif";
+  --font-MikhakWoff2one: "Mikhak-woff2-1", "sans-serif";
+  --font-Dirooz: "Dirooz", "sans-serif";
+  --breakpoint-xs: 480px;
+}
+/* 
+spacing: {
+  4.5: "1.125rem",
+  25: "6.25rem",
+  30: "7.5rem",
+  50: "12.5rem",
+}, */
+
+/* colors: {
+  gradientCostum: "linear-gradient(90deg, rgba(54, 54, 54, 0) 0%, #7E7E7E 48.5%, rgba(54, 54, 54, 0) 100%)"
+} */
