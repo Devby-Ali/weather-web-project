@@ -2,6 +2,73 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@font-face {
+  font-family: "Roboto Black";
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/Roboto-Balck.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Roboto Bold";
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/Roboto-Bold.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Roboto ExtraLight";
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/Roboto-ExtraLight.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Roboto Light";
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/Roboto-Light.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Roboto Medium";
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/Roboto-Medium.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Roboto Regular";
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/Roboto-Regular.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Roboto SemiBold";
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/Roboto-SemiBold.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Roboto Thin";
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/Roboto-Thin.ttf") format("ttf");
+}
+
+@layer base {
+  *,
+  *::after,
+  *::before {
+    outline: none;
+    box-sizing: inherit;
+  }
+
+  a {
+    text-decoration: none;
+    transition: all 200ms ease;
+  }
+
+  i {
+    user-select: none;
+  }
+}
+
 @utility flex-center {
   @apply flex items-center justify-center;
 }
@@ -31,12 +98,14 @@
   --shadow-costum: 0px 2px 7px 0px #00000026;
   --shadow-dark: 0px 4px 10px 0px #a6a5a526;
   --radius-4xl: 2rem;
-  --font-EstedadThin: "Estedad Thin", "sans-serif";
-  /* --font-EstedadLight: "Estedad Light", "sans-serif";
-  --font-EstedadMedium: "Estedad Medium", "sans-serif";
-  --font-EstedadBold: "Estedad Bold", "sans-serif";
-  --font-MikhakWoff2one: "Mikhak-woff2-1", "sans-serif";
-  --font-Dirooz: "Dirooz", "sans-serif"; */
+  --font-Roboto-black: "Roboto Black", "sans-serif";
+  --font-Roboto-Bold: "Roboto Bold", "sans-serif";
+  --font-Roboto-ExtraLight: "Roboto ExtraLight", "sans-serif";
+  --font-Roboto-Light: "Roboto Light", "sans-serif";
+  --font-Roboto-Medium: "Roboto Medium", "sans-serif";
+  --font-Roboto-Regular: "Roboto Regular", "sans-serif";
+  --font-Roboto-SemiBold: "Roboto SemiBold", "sans-serif";
+  --font-Roboto-Thin: "Roboto Thin", "sans-serif";
   --breakpoint-xs: 480px;
 }
 /* 
