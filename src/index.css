@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @utility flex-center {
   @apply flex items-center justify-center;
 }
@@ -30,11 +32,11 @@
   --shadow-dark: 0px 4px 10px 0px #a6a5a526;
   --radius-4xl: 2rem;
   --font-EstedadThin: "Estedad Thin", "sans-serif";
-  --font-EstedadLight: "Estedad Light", "sans-serif";
+  /* --font-EstedadLight: "Estedad Light", "sans-serif";
   --font-EstedadMedium: "Estedad Medium", "sans-serif";
   --font-EstedadBold: "Estedad Bold", "sans-serif";
   --font-MikhakWoff2one: "Mikhak-woff2-1", "sans-serif";
-  --font-Dirooz: "Dirooz", "sans-serif";
+  --font-Dirooz: "Dirooz", "sans-serif"; */
   --breakpoint-xs: 480px;
 }
 /* 
