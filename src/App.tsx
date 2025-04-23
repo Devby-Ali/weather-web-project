@@ -1,10 +1,20 @@
 import { useRoutes } from "react-router-dom";
 import routes from "./routes";
 import { ThemeProvider } from "@material-tailwind/react";
+import { useEffect } from "react";
 
-function App() {
+
+
+const App = (): React.JSX.Element => {
+  useEffect(() => {
+    if (localStorage.theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
   const router = useRoutes(routes);
-  return <ThemeProvider>{router}</ThemeProvider>;
+  return <>{router}</>;
 }
 
 export default App;
