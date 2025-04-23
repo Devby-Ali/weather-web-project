@@ -1,12 +1,10 @@
-function App() {
+import { useRoutes } from "react-router-dom";
+import routes from "./routes";
+import { ThemeProvider } from "@material-tailwind/react";
 
-  return (
-    <>
-  <h1 className="text-3xl text-darkText font-bold underline">
-    Hello world!
-  </h1>
-    </>
-  )
+function App() {
+  const router = useRoutes(routes);
+  return <ThemeProvider>{router}</ThemeProvider>;
 }
 
-export default App
+export default App;
