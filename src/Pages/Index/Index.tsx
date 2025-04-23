@@ -1,10 +1,11 @@
 import React from 'react'
+import Navbar from '../../Components/Navbar/Navbar'
 
-const Index = () => {
+const Index = (): React.JSX.Element => {
   return (
-    <div>
-      hello word
-    </div>
+    <>
+    <Navbar/>
+    </>
   )
 }
 

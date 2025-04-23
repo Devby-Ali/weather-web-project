@@ -5,12 +5,12 @@ import { FaCaretDown } from "react-icons/fa";
 import { RxExit } from "react-icons/rx";
 import { IoMoonOutline } from "react-icons/io5";
 import { IoSunnyOutline } from "react-icons/io5";
-import { Card, Collapse } from "@material-tailwind/react";
 
 const Navbar = (): React.JSX.Element => {
   const [open, setOpen] = useState(false);
-  const toggleOpen = () => setOpen((cur) => !cur);
   const [dark, setDark] = useState(false);
+
+  const toggleOpen = () => setOpen((cur) => !cur);
 
   const darkModeHandler = () => {
     setDark(true);
@@ -26,7 +26,7 @@ const Navbar = (): React.JSX.Element => {
 
   return (
     <>
-      <header className="relative flex justify-between h-[73px] bg-lightPrimary-800 dark:bg-darkPrimary-800 shadow-md dark:shadow-dark px-6">
+      <header className="relative flex justify-between h-[80px] bg-lightPrimary dark:bg-darkPrimary shadow-md dark:shadow-dark px-6">
         <div className="flex-center gap-x-5">
           <div
             className="flex-center h-10 w-10 border border-gray-500 rounded-lg cursor-pointer"
@@ -42,14 +42,14 @@ const Navbar = (): React.JSX.Element => {
               type="text"
               name=""
               id=""
-              className="w-full h-full bg-transparent px-2 dark:text-lightText-800 ltr-text outline-none"
+              className="w-full h-full bg-transparent px-2 dark:text-lightText ltr-text outline-none"
               placeholder="Search Your Location"
             />
           </div>
         </div>
 
         <div className="flex-center gap-x-2">
-          <span className="text-[11.5px] text-darkText-800 dark:text-lightText-800 tracking-tight">
+          <span className="text-[11.5px] text-darkText dark:text-lightText tracking-tight">
             Weather Dashboard
           </span>
           <div className="hidden sm:block w-14 h-14 rounded-full overflow-hidden">
@@ -57,13 +57,17 @@ const Navbar = (): React.JSX.Element => {
           </div>
         </div>
       </header>
-      <Collapse className="w-[220px] mr-[25px] -mt-3 absolute z-10" open={open}>
-        <Card className="h-60 px-4 py-3 divide-y dark:bg-black" dir="ltr">
+      <div
+        className={`${
+          open ? "absolute" : "hidden"
+        } w-[220px] mr-[25px] -mt-3 z-10`}
+      >
+        <div className="h-60 px-4 py-3 divide-y dark:bg-black" dir="ltr">
           <div className="mb-3">
-            <span className="dark:text-lightText-800">Mode</span>
-            <div className="flex w-full border border-gray-400 h-[33px] mt-1.5 rounded-[4px] child:text-[13px] child:tracking-wider overflow-hidden">
+            <span className="dark:text-lightText">Mode</span>
+            <div className="flex w-full border border-gray-400 h-[33px] mt-1.5 rounded-[4px] *:text-[13px] *:tracking-wider overflow-hidden">
               <span
-                className="flex-center gap-x-2 w-full text-blue-600 dark:text-lightText-800 dark:font-bold cursor-pointer"
+                className="flex-center gap-x-2 w-full text-blue-600 dark:text-lightText dark:font-bold cursor-pointer"
                 onClick={() => lightModeHandler()}
               >
                 <IoSunnyOutline />
@@ -71,7 +75,7 @@ const Navbar = (): React.JSX.Element => {
               </span>
               <span className="w-[2px] max-h-full bg-blue-gray-300"></span>
               <span
-                className="flex-center gap-x-2 w-full dark:text-darkText-800 dark:bg-lightPrimary-800 dark:font-bold cursor-pointer"
+                className="flex-center gap-x-2 w-full dark:text-darkText dark:bg-lightPrimary dark:font-bold cursor-pointer"
                 onClick={() => darkModeHandler()}
               >
                 <IoMoonOutline />
@@ -80,26 +84,26 @@ const Navbar = (): React.JSX.Element => {
             </div>
           </div>
           <div className="pt-4 mb-3">
-            <span className="dark:text-lightText-800">Language</span>
-            <div className="flex w-full border border-gray-400 h-[33px] mt-1.5 rounded-[4px] child:text-[13px] child:tracking-wider">
-              <span className="flex-center gap-x-2 w-full text-blue-600 dark:text-lightText-800 dark:font-bold cursor-pointer">
+            <span className="dark:text-lightText">Language</span>
+            <div className="flex w-full border border-gray-400 h-[33px] mt-1.5 rounded-[4px] *:text-[13px] *:tracking-wider">
+              <span className="flex-center gap-x-2 w-full text-blue-600 dark:text-lightText dark:font-bold cursor-pointer">
                 En
               </span>
               <span className="w-[2px] max-h-full bg-blue-gray-300"></span>
-              <span className="flex-center gap-x-2 w-full text-blue-600 dark:text-lightText-800 dark:font-bold cursor-pointer">
+              <span className="flex-center gap-x-2 w-full text-blue-600 dark:text-lightText dark:font-bold cursor-pointer">
                 Fa
               </span>
             </div>
           </div>
           <Link
             to={"/Login"}
-            className="flex items-center pl-[2px] pt-3.5 gap-x-2 h-full child:dark:text-lightText-800 child:dark:font-bold"
+            className="flex items-center pl-[2px] pt-3.5 gap-x-2 *:dark:text-lightText *:dark:font-bold"
           >
             <RxExit className="text-lg" />
-            <span>Exit</span>
+            <span className="text-lightText">Exit</span>
           </Link>
-        </Card>
-      </Collapse>
+        </div>
+      </div>
     </>
   );
 };
