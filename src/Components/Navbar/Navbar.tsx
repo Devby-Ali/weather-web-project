@@ -26,15 +26,15 @@ const Navbar = (): React.JSX.Element => {
 
   return (
     <>
-      <header className="relative flex justify-between h-[80px] bg-lightPrimary dark:bg-darkPrimary shadow-md dark:shadow-dark px-6">
+      <header className="relative flex justify-between h-20 bg-lightPrimary dark:bg-darkPrimary shadow-md dark:shadow-dark px-6">
         <div className="flex-center gap-x-5">
           <div
-            className="flex-center h-10 w-10 border border-gray-500 rounded-lg cursor-pointer"
+            className={`flex-center h-10 w-10 border ${open ? "border-active-blue text-active-blue bg-active-blue/20" : "border-gray-500 text-gray-500"} rounded-lg cursor-pointer text-xl`}
             onClick={toggleOpen}
           >
-            <IoSettingsOutline className="text-xl text-gray-500" />
+            <IoSettingsOutline />
           </div>
-          <div className="h-10 sm:w-[295px] flex items-center justify-between border border-gray-500 rounded-[4px]">
+          <div className="h-10 sm:w-[295px] flex items-center justify-between border border-gray-500 rounded-sm">
             <span className="w-6 h-6 flex-center mr-3">
               <FaCaretDown className="text-gray-600" />
             </span>
@@ -49,7 +49,7 @@ const Navbar = (): React.JSX.Element => {
         </div>
 
         <div className="flex-center gap-x-2">
-          <span className="text-[11.5px] text-darkText dark:text-lightText tracking-tight">
+          <span className="text-[11.5px] text-darkText dark:text-lightText">
             Weather Dashboard
           </span>
           <div className="hidden sm:block w-14 h-14 rounded-full overflow-hidden">
@@ -57,52 +57,57 @@ const Navbar = (): React.JSX.Element => {
           </div>
         </div>
       </header>
-      <div
+      <div dir="ltr"
         className={`${
           open ? "absolute" : "hidden"
-        } w-[220px] mr-[25px] -mt-3 z-10`}
+        } w-[220px] mr-[25px] -mt-3 z-10 shadow-costum dark:shadow-dark bg-white dark:bg-black rounded-lg px-4 pb-3 pt-3.5 divide-y divide-gray-300 font-Roboto-regular`}
       >
-        <div className="h-60 px-4 py-3 divide-y dark:bg-black" dir="ltr">
-          <div className="mb-3">
-            <span className="dark:text-lightText">Mode</span>
-            <div className="flex w-full border border-gray-400 h-[33px] mt-1.5 rounded-[4px] *:text-[13px] *:tracking-wider overflow-hidden">
-              <span
-                className="flex-center gap-x-2 w-full text-blue-600 dark:text-lightText dark:font-bold cursor-pointer"
-                onClick={() => lightModeHandler()}
-              >
-                <IoSunnyOutline />
-                Light
-              </span>
-              <span className="w-[2px] max-h-full bg-blue-gray-300"></span>
-              <span
-                className="flex-center gap-x-2 w-full dark:text-darkText dark:bg-lightPrimary dark:font-bold cursor-pointer"
-                onClick={() => darkModeHandler()}
-              >
-                <IoMoonOutline />
-                Dark
-              </span>
-            </div>
+
+        <div className="pb-3 mb-4">
+          <span className="dark:text-lightText tracking-wide">Mode</span>
+          <div className="flex h-[33px] mt-2 *:text-[14px] *:tracking-wide">
+            <span
+              className="flex-center gap-x-2 w-full text-active-blue dark:text-lightText dark:font-bold cursor-pointer border border-active-blue dark:border-gray-400 rounded-l-sm border-r-0"
+              onClick={() => lightModeHandler()}
+            >
+              <IoSunnyOutline />
+              Light
+            </span>
+            <span className="h-full w-0.5 bg-active-blue/80 dark:bg-gray-400"></span>
+            <span
+              className="flex-center gap-x-2 w-full text-gray-400 dark:text-darkText dark:bg-lightPrimary dark:font-bold cursor-pointer border border-gray-400 rounded-r-sm border-l-0"
+              onClick={() => darkModeHandler()}
+            >
+              <IoMoonOutline />
+              Dark
+            </span>
           </div>
-          <div className="pt-4 mb-3">
-            <span className="dark:text-lightText">Language</span>
-            <div className="flex w-full border border-gray-400 h-[33px] mt-1.5 rounded-[4px] *:text-[13px] *:tracking-wider">
-              <span className="flex-center gap-x-2 w-full text-blue-600 dark:text-lightText dark:font-bold cursor-pointer">
-                En
-              </span>
-              <span className="w-[2px] max-h-full bg-blue-gray-300"></span>
-              <span className="flex-center gap-x-2 w-full text-blue-600 dark:text-lightText dark:font-bold cursor-pointer">
-                Fa
-              </span>
-            </div>
-          </div>
-          <Link
-            to={"/Login"}
-            className="flex items-center pl-[2px] pt-3.5 gap-x-2 *:dark:text-lightText *:dark:font-bold"
-          >
-            <RxExit className="text-lg" />
-            <span className="text-lightText">Exit</span>
-          </Link>
         </div>
+
+        <div className="pb-3 pt-0.5">
+          <span className="dark:text-lightText tracking-wide">Language</span>
+          <div className="flex h-[33px] mt-2 *:text-[14px] *:tracking-wide">
+            <span
+              className="flex-center gap-x-2 w-full text-active-blue dark:text-lightText dark:font-bold cursor-pointer border border-active-blue dark:border-gray-400 rounded-l-sm border-r-0"
+            >
+              En
+            </span>
+            <span className="h-full w-0.5 bg-active-blue/80 dark:bg-gray-400"></span>
+            <span
+              className="flex-center gap-x-2 w-full text-gray-400 dark:text-darkText dark:bg-lightPrimary dark:font-bold cursor-pointer border border-gray-400 rounded-r-sm border-l-0"
+            >
+              Fa
+            </span>
+          </div>
+        </div>
+
+        <Link
+          to={"/Login"}
+          className="flex items-center pl-[2px] pt-4 gap-x-2 *:dark:text-lightText *:dark:font-bold tracking-wide"
+        >
+          <RxExit className="text-lg" />
+          <span className="dark:text-lightText">Exit</span>
+        </Link>
       </div>
     </>
   );
