@@ -7,17 +7,17 @@ import { IoSunnyOutline } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
 
 const Navbar = (): React.JSX.Element => {
-  const [openSetting, setOpenSetting] = useState(false);
-  const [openSearch, setOpenSearch] = useState(false);
-  const [dark, setDark] = useState(false);
+  const [openSetting, setOpenSetting] = useState<boolean>(false);
+  const [openSearch, setOpenSearch] = useState<boolean>(false);
+  const [dark, setDark] = useState<boolean>(false);
 
-  const darkModeHandler = () => {
+  const darkModeHandler = (): void => {
     setDark(true);
     document.documentElement.classList.add("dark");
     localStorage.setItem("theme", "dark");
   };
 
-  const lightModeHandler = () => {
+  const lightModeHandler = (): void => {
     setDark(false);
     document.documentElement.classList.remove("dark");
     localStorage.theme = "light";
