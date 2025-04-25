@@ -79,6 +79,7 @@
   --color-darkText: #003464;
   --color-active-blue: #2196F3;
   --color-darkPrimary: #151d32;
+  --color-box-dark: rgba(41, 47, 69, 1);
   --color-lightText: #f3f4f7;
   --color-lightPrimary: #f3fafe;
   --color-stoneCard: #e1e9ee;
@@ -88,8 +89,8 @@
     #7e7e7e 48.5%,
     rgba(54, 54, 54, 0) 100%
   );
-
-  --shadow-costum: 0px 2px 7px 0px #00000026;
+  --shadow-header: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
+  --shadow-custom: 0px 2px 7px 0px #00000026;
   --shadow-dark: 0px 4px 10px 0px #a6a5a526;
   --radius-4xl: 2rem;
   --font-yekan: "yekan", "sans-serif";
