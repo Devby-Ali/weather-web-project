@@ -37,7 +37,7 @@
 }
 
 @layer base {
-  
+
   :root {
     direction: rtl;
     writing-mode: horizontal-tb;
@@ -99,6 +99,10 @@
   --font-Roboto-bold: "Roboto Bold", "sans-serif";
   --font-Inter-regular: "Inter Regular", "sans-serif";
   --breakpoint-xs: 480px;
+}
+
+.dark .recharts-cartesian-axis-tick text {
+  fill: #f3f4f7 !important;
 }
 /* 
 spacing: {

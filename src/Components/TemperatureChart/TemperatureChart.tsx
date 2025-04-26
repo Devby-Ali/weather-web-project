@@ -29,7 +29,7 @@ const monthlyTemperatureData = [
   { month: "Jan", temp: 15 },
   { month: "Feb", temp: 10 },
   { month: "Mar", temp: 25 },
-  { month: "Apr", temp: 30 },
+  { month: "Apr", temp: 31 },
   { month: "May", temp: 11 },
   { month: "Jun", temp: 28 },
   { month: "Jul", temp: 22 },
@@ -70,6 +70,7 @@ const TemperatureChart = () => {
 
           <CartesianGrid strokeDasharray="4 3" strokeWidth={0.7} stroke="#AFBCC1" vertical={false} />
           <XAxis
+          className="text-white"
             tickLine={false}
             axisLine={false}
             dataKey="month"
