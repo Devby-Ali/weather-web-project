@@ -6,9 +6,9 @@ const TemperatureInfo = (): React.JSX.Element => {
     <section className="flex justify-between w-full lg:w-[607px] h-[234px] px-6 py-5 shadow-custom text-darkText dark:text-lightText mb-7 lg:mb-0 font-Roboto-regular">
       <div className="flex flex-col items-end max-w-48 mr-3 mt-1.5 font-Inter-regular">
         <img src="/images/svgs/image7.svg" alt="img" />
-        <div className="-ml-5 mt-1 flex flex-col items-end">
-          <span className="text-[32px]">Cloudy</span>
-          <span>Feels Like 26</span>
+        <div className="-ml-5 mt-[3px] flex flex-col items-end">
+          <span className="text-[32px]/12">Cloudy</span>
+          <span className="mt-[1px]">Feels Like 26</span>
         </div>
       </div>
       <div>

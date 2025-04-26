@@ -3,6 +3,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import TemperatureInfo from "../../Components/TemperatureInfo/TemperatureInfo";
 import TemperatureChart from "../../Components/TemperatureChart/TemperatureChart";
+import WeatherDetails from "../../Components/WeatherDetails/WeatherDetails";
 
 const Index = (): React.JSX.Element => {
   return (
@@ -12,6 +13,7 @@ const Index = (): React.JSX.Element => {
         <TemperatureInfo />
         <TemperatureChart />
       </div>
+      <WeatherDetails />
       <Footer />
     </>
   );

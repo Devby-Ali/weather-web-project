@@ -1,5 +1,5 @@
+import React from "react";
 import {
-  LineChart,
   Line,
   XAxis,
   YAxis,
@@ -40,7 +40,7 @@ const monthlyTemperatureData = [
   { month: "Dec", temp: 16 },
 ];
 
-const TemperatureChart = () => {
+const TemperatureChart = (): React.JSX.Element => {
   return (
     <section className="lg:w-[744px] h-[234px] flex flex-col justify-between px-4 pt-4 pb-5.5 ltr-text font-Inter-regular">
       <h3 className="text-lg/tight text-darkText dark:text-lightText">
@@ -53,7 +53,6 @@ const TemperatureChart = () => {
         height="68%"
       >
         <ComposedChart data={monthlyTemperatureData}>
-
           <defs>
             <linearGradient id="tempGradient" x1="0" y1="0" x2="1" y2="0">
               <stop offset="-0.58%" stopColor="#4CDFE81D" />
@@ -68,9 +67,14 @@ const TemperatureChart = () => {
             </linearGradient>
           </defs>
 
-          <CartesianGrid strokeDasharray="4 3" strokeWidth={0.7} stroke="#AFBCC1" vertical={false} />
+          <CartesianGrid
+            strokeDasharray="4 3"
+            strokeWidth={0.7}
+            stroke="#AFBCC1"
+            vertical={false}
+          />
           <XAxis
-          className="text-white"
+            className="text-white"
             tickLine={false}
             axisLine={false}
             dataKey="month"
@@ -110,37 +114,3 @@ const TemperatureChart = () => {
 };
 
 export default TemperatureChart;
-
-// <div className="bg-white p-6 rounded-lg shadow-md">
-//   <h2 className="text-xl font-bold mb-4 text-gray-800">
-//     نمودار میانگین دمای ماهانه
-//   </h2>
-//   <div className="h-64">
-//     <ResponsiveContainer width="100%" height="100%">
-//       <LineChart data={monthlyTemperatureData}>
-//         <CartesianGrid strokeDasharray="3 3" />
-//         <XAxis
-//           dataKey="month"
-//           tick={{ fill: "#4a5568" }}
-//         />
-//         <YAxis
-//           tick={{ fill: "#4a5568" }}
-//           label={{
-//             value: "دما (°C)",
-//             angle: -90,
-//             position: "insideLeft",
-//             fill: "#4a5568"
-//           }}
-//         />
-//         <Tooltip />
-//         <Line
-//           type="monotone"
-//           dataKey="temp"
-//           stroke="#3182ce"
-//           strokeWidth={2}
-//           dot={{ fill: "#3182ce", strokeWidth: 2 }}
-//         />
-//       </LineChart>
-//     </ResponsiveContainer>
-//   </div>
-// </div>
