@@ -3,7 +3,7 @@ import { IoLocation } from "react-icons/io5";
 
 const TemperatureInfo = (): React.JSX.Element => {
   return (
-    <section className="flex justify-between w-full lg:w-[890px] h-[234px] px-6 py-5 shadow-custom text-darkText dark:text-lightText mb-7 lg:mb-0">
+    <section className="flex justify-between w-full lg:w-[607px] h-[234px] px-6 py-5 shadow-custom text-darkText dark:text-lightText mb-7 lg:mb-0">
       <div className="flex flex-col max-w-48 mr-3 mt-1.5">
         <img src="/images/svgs/image7.svg" alt="img" />
         <span className="text-[33px] tracking-wide -mr-1.5 mt-1">Cloudy</span>

@@ -37,7 +37,7 @@
 }
 
 @layer base {
-
+  
   :root {
     direction: rtl;
     writing-mode: horizontal-tb;
@@ -77,7 +77,7 @@
 
 @theme {
   --color-darkText: #003464;
-  --color-active-blue: #2196F3;
+  --color-active-blue: #2196f3;
   --color-darkPrimary: #151d32;
   --color-box-dark: rgba(41, 47, 69, 1);
   --color-lightText: #f3f4f7;
