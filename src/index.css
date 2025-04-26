@@ -91,6 +91,7 @@
   );
   --shadow-header: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
   --shadow-custom: 0px 2px 7px 0px #00000026;
+  --shadow-Login: 0px 4px 8px 0px #00000040;
   --shadow-weatherDetails: 0px 4px 10px 0px #00000026;
   --shadow-dark: 0px 4px 10px 0px #a6a5a526;
   --radius-4xl: 2rem;
