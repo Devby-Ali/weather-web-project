@@ -10,8 +10,8 @@ const Index = (): React.JSX.Element => {
     <>
       <Navbar />
       <div className="px-6 flex flex-col lg:flex-row-reverse justify-between gap-x-10 mt-7 *:bg-stoneCard dark:*:bg-[#292F45] *:rounded-3xl">
-        <TemperatureInfo />
         <TemperatureChart />
+        <TemperatureInfo />
       </div>
       <WeatherDetails />
       <Footer />

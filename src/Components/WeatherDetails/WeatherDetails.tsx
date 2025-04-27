@@ -30,7 +30,7 @@ const WeatherDetails = (): React.JSX.Element => {
       {
         breakpoint: 1536,
         settings: {
-          slidesToShow: 11.2,
+          slidesToShow: 11,
           slidesToScroll: 1,
           infinite: true,
         },

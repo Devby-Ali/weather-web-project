@@ -26,29 +26,27 @@ const Navbar = (): React.JSX.Element => {
   return (
     <>
       <header className="relative flex justify-between h-20 bg-lightPrimary dark:bg-darkPrimary shadow-header dark:shadow-dark px-6 tracking-wide">
-        <div className="flex-center gap-x-5">
-          <div
-            className={`flex-center h-10 w-10 border ${
-              openSetting
-                ? "border-active-blue text-active-blue bg-active-blue/20"
-                : "border-zinc-400/70 text-zinc-400"
-            } rounded-lg cursor-pointer text-xl`}
-            onClick={() => setOpenSetting(!openSetting)}
-          >
-            <IoSettingsOutline />
+        <div className="flex-center gap-x-2">
+          <div className="hidden sm:block w-14 h-14 rounded-full overflow-hidden">
+            <img src="/images/image1.jpg" alt="" />
           </div>
+          <span className="text-[12px] text-darkText dark:text-lightText font-Roboto-regular tracking-wide">
+            Weather Dashboard
+          </span>
+        </div>
+        <div className="flex-center gap-x-5">
           <div
             className={`relative h-10 sm:w-[295px] flex items-center justify-between rounded-sm border ${
               openSearch ? "border-active-blue" : "border-zinc-400/70"
             }`}
           >
             <span
-              onClick={() => setOpenSearch(!openSearch)}
-              className={`w-6 h-6 flex-center mr-[13px] text-zinc-500 text-xl cursor-pointer ${openSearch && "rotate-180"}`}
+              className={`absolute -top-[10px] left-3 text-[12px] font-Roboto-regular dark:bg-darkPrimary bg-lightPrimary px-[3px] tracking-wide ${
+                openSearch
+                  ? "text-active-blue"
+                  : "dark:text-zinc-400 text-zinc-500"
+              }`}
             >
-             <IoMdArrowDropdown />
-            </span>
-            <span className={`absolute -top-[10px] left-3 text-[12px] font-Roboto-regular dark:bg-darkPrimary bg-lightPrimary px-[3px] tracking-wide ${openSearch ? "text-active-blue" : "dark:text-zinc-400 text-zinc-500"}`}>
               Search Your Location
             </span>
             <input
@@ -59,6 +57,14 @@ const Navbar = (): React.JSX.Element => {
               onFocus={() => setOpenSearch(true)}
               onBlur={() => setOpenSearch(false)}
             />
+            <span
+              onClick={() => setOpenSearch(!openSearch)}
+              className={`w-6 h-6 flex-center mr-[13px] text-zinc-500 text-xl cursor-pointer ${
+                openSearch && "rotate-180"
+              }`}
+            >
+              <IoMdArrowDropdown />
+            </span>
             <ul
               className={`${
                 openSearch ? "absolute" : "hidden"
@@ -68,22 +74,22 @@ const Navbar = (): React.JSX.Element => {
               <li>Menu Item</li>
             </ul>
           </div>
-        </div>
-
-        <div className="flex-center gap-x-2">
-          <span className="text-[12px] text-darkText dark:text-lightText font-Roboto-regular tracking-wide">
-            Weather Dashboard
-          </span>
-          <div className="hidden sm:block w-14 h-14 rounded-full overflow-hidden">
-            <img src="/images/image1.jpg" alt="" />
+          <div
+            className={`flex-center h-10 w-10 border ${
+              openSetting
+                ? "border-active-blue text-active-blue bg-active-blue/20"
+                : "border-zinc-400/70 text-zinc-400"
+            } rounded-lg cursor-pointer text-xl`}
+            onClick={() => setOpenSetting(!openSetting)}
+          >
+            <IoSettingsOutline />
           </div>
         </div>
       </header>
       <div
-        dir="ltr"
         className={`${
           openSetting ? "absolute" : "hidden"
-        } w-[220px] mr-[25px] -mt-3.5 z-10 shadow-header dark:shadow-dark bg-white dark:bg-box-dark rounded-lg px-4 py-[13px] divide-y divide-zinc-200 dark:divide-white/15 font-Roboto-regular`}
+        } right-0 w-[220px] mr-[25px] -mt-3.5 z-10 shadow-header dark:shadow-dark bg-white dark:bg-box-dark rounded-lg px-4 py-[13px] divide-y divide-zinc-200 dark:divide-white/15 font-Roboto-regular`}
       >
         <div className="pb-3 mb-4">
           <span className="dark:text-lightText tracking-wide">Mode</span>
