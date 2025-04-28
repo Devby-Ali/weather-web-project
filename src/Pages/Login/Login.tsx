@@ -31,7 +31,7 @@ const Login = (): React.JSX.Element => {
       <div className="flex-center h-screen">
         <div className="flex w-[700px] lg:w-240 h-140 rounded-xl overflow-hidden shadow-Login mb-6">
           <form className="w-[506px] flex-center bg-white dark:bg-box-dark">
-            <div className="flex flex-col justify-between w-96.5 h-91 mb-3">
+            <div className="flex flex-col justify-between w-96.5 h-92.5 mb-1.5">
               <div>
                 <h3 className="text-[26px] font-Roboto-bold text-darkText dark:text-lightText text-center mb-7">
                   Login
@@ -47,7 +47,7 @@ const Login = (): React.JSX.Element => {
               </div>
 
               <button
-                className="h-10.5 bg-[#2196F3] text-lightText w-full rounded-md"
+                className="h-10.5 bg-[#2196F3] text-lightText w-full rounded-md shadow-md"
                 onClick={userLogin}
               >
                 LOGIN
