@@ -25,23 +25,23 @@ const Navbar = (): React.JSX.Element => {
 
   return (
     <>
-      <header className="relative flex justify-between h-20 bg-lightPrimary dark:bg-darkPrimary shadow-header dark:shadow-dark px-6 tracking-wide">
+      <header className="relative flex justify-between h-20 bg-lightPrimary dark:bg-darkPrimary shadow-header dark:shadow-dark px-4 sm:px-6 tracking-wide">
         <div className="flex-center gap-x-2">
           <div className="hidden sm:block w-14 h-14 rounded-full overflow-hidden">
             <img src="/images/image1.jpg" alt="" />
           </div>
-          <span className="text-[12px] text-darkText dark:text-lightText font-Roboto-regular tracking-wide">
+          <span className="text-[11px] sm:text-xs text-darkText dark:text-lightText font-Roboto-light sm:font-Roboto-regular tracking-wide pr-4 text-nowrap">
             Weather Dashboard
           </span>
         </div>
-        <div className="flex-center gap-x-5">
+        <div className="flex-center gap-x-2 sm:gap-x-5">
           <div
-            className={`relative h-10 sm:w-[295px] flex items-center justify-between rounded-sm border ${
-              openSearch ? "border-active-blue" : "border-zinc-400/70"
+            className={`relative h-8 sm:h-10 sm:w-[295px] flex items-center justify-between rounded-sm border ${
+              openSearch ? "border-active-blue/50" : "border-zinc-400/50"
             }`}
           >
             <span
-              className={`absolute -top-[10px] left-3 text-[12px] font-Roboto-regular dark:bg-darkPrimary bg-lightPrimary px-[3px] tracking-wide ${
+              className={`hidden xs:block absolute -top-[9px] left-3 text-xs font-Roboto-light sm:font-Roboto-regular dark:bg-darkPrimary bg-lightPrimary px-[3px] tracking-wide ${
                 openSearch
                   ? "text-active-blue"
                   : "dark:text-zinc-400 text-zinc-500"
@@ -53,13 +53,14 @@ const Navbar = (): React.JSX.Element => {
               type="text"
               name=""
               id=""
-              className="w-full h-full mb-0.5 ml-[3px] bg-transparent font-Roboto-regular px-2 dark:text-lightText ltr-text outline-none"
+              className="w-full h-full text-xs sm:text-base mb-0.5 ml-[3px] bg-transparent font-Roboto-regular px-2 dark:text-lightText ltr-text outline-none xs:placeholder:text-transparent"
+              placeholder="Search your location"
               onFocus={() => setOpenSearch(true)}
               onBlur={() => setOpenSearch(false)}
             />
             <span
               onClick={() => setOpenSearch(!openSearch)}
-              className={`w-6 h-6 flex-center mr-[13px] text-zinc-500 text-xl cursor-pointer ${
+              className={`w-6 h-6 flex-center mr-2 sm:mr-[13px] text-zinc-500 text-xl cursor-pointer ${
                 openSearch && "rotate-180"
               }`}
             >
@@ -75,11 +76,11 @@ const Navbar = (): React.JSX.Element => {
             </ul>
           </div>
           <div
-            className={`flex-center h-10 w-10 border ${
+            className={`flex-center sm:h-10 sm:w-10 sm:border rounded-lg cursor-pointer text-xl ${
               openSetting
-                ? "border-active-blue text-active-blue bg-active-blue/20"
-                : "border-zinc-400/70 text-zinc-400"
-            } rounded-lg cursor-pointer text-xl`}
+                ? "border-active-blue/50 text-active-blue bg-active-blue/5"
+                : "border-zinc-400/50 text-zinc-400"
+            }`}
             onClick={() => setOpenSetting(!openSetting)}
           >
             <IoSettingsOutline />
