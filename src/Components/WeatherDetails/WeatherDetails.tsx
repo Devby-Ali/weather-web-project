@@ -76,7 +76,7 @@ const WeatherDetails = (): React.JSX.Element => {
     ],
   };
   return (
-    <section className="flex flex-col justify-between h-[381px] mx-6 mt-7 mb-26 pl-7 pt-6 pb-[26px] bg-stoneCard dark:bg-[#292F45] rounded-3xl text-darkText dark:text-lightText ltr-text font-Inter-regular shadow-weatherDetails">
+    <section className="flex flex-col justify-between h-[381px] mt-7 mb-26 pl-7 pt-6 pb-[26px] bg-stoneCard dark:bg-[#292F45] rounded-3xl text-darkText dark:text-lightText ltr-text font-Inter-regular shadow-weatherDetails">
       <h3 className="text-2xl/7">2 weeks Forecast</h3>
 
       <div>

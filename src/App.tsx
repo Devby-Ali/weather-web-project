@@ -1,6 +1,5 @@
 import { useRoutes } from "react-router-dom";
 import routes from "./routes";
-import { ThemeProvider } from "@material-tailwind/react";
 import { useEffect } from "react";
 
 
