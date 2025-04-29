@@ -60,7 +60,7 @@ const WeatherDetails = (): React.JSX.Element => {
       <Swiper
         breakpoints={breakpoints}
         slidesPerView={11}
-        spaceBetween={10}
+        spaceBetween={15}
         navigation={false}
         pagination={{ clickable: true }}
         className="!pt-9"
@@ -75,7 +75,7 @@ const WeatherDetails = (): React.JSX.Element => {
               <h2 className="text-sm px-2">{card.day}</h2>
               <span className="w-16 h-0.5 bg-gradient-to-r from-[#36363600] via-[#7E7E7E] to-[#36363600] rounded-full mt-[11px]"></span>
 
-              <div className="w-12 lg:w-18 h-12 lg:h-18 flex-center mt-6.5">
+              <div className="size-12 lg:size-17.5 flex-center mt-6.5">
                 <img src={card.img} alt="" />
               </div>
               <span className="text-lg mt-5.5">{card.Temp}°C</span>
