@@ -42,14 +42,13 @@ const monthlyTemperatureData = [
 
 const TemperatureChart = (): React.JSX.Element => {
   return (
-    <section className="lg:w-[744px] h-[234px] flex flex-col justify-between px-4 pt-4 pb-5.5 ltr-text font-Inter-regular">
-      <h3 className="text-lg/tight text-darkText dark:text-lightText">
+    <section className="h-[237px] lg:w-1/2 xl:w-4/7 flex flex-col justify-between px-6 sm:px-4 pt-4 pb-5.5 ltr-text font-Roboto-light sm:font-Inter-regular">
+      <h3 className="text-sm sm:text-lg/tight text-darkText dark:text-lightText">
         Average Monthly Temperature
       </h3>
 
       <ResponsiveContainer
-        className={"font-medium text-[10px]"}
-        width="100%"
+        className={"font-medium text-[10px] -mx-2"}
         height="68%"
       >
         <ComposedChart data={monthlyTemperatureData}>
