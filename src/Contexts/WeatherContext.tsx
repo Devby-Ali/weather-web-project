@@ -1,20 +1,21 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import { getCurrentWeather } from '../services/Axios/Requests/getCurrentWeather';
+import React, { useState, useEffect, ReactNode, createContext } from "react";
+import { getCurrentWeather } from "../services/Axios/Requests/weatherService";
+import { WeatherContextType } from "./WeatherContext.type";
 
-const WeatherContext = createContext<{
-  city: string;
-  setCity: React.Dispatch<React.SetStateAction<string>>;
-  weatherData: any;
-  loading: boolean;
-}>({
-  city: '',
+const WeatherContext = createContext<WeatherContextType>({
+  city: "",
   setCity: () => {},
   weatherData: null,
   loading: false,
 });
 
-export const WeatherProvider = ({ children }) => {
-  const [city, setCity] = useState('');
+export const WeatherProvider = ({
+  children,
+}: {
+  children: ReactNode;
+}): React.JSX.Element => {
+
+  const [city, setCity] = useState("Tehran");
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -24,7 +25,7 @@ export const WeatherProvider = ({ children }) => {
       const data = await getCurrentWeather(city);
       setWeatherData(data);
     } catch (error) {
-        console.error('Error fetching weather data:', error);
+      console.error("Error fetching weather data:", error);
     } finally {
       setLoading(false);
     }
@@ -41,4 +42,4 @@ export const WeatherProvider = ({ children }) => {
   );
 };
 
-export const useWeather = () => useContext(WeatherContext);
+export { WeatherContext };
