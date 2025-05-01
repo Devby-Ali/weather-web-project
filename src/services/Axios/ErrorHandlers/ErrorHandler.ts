@@ -32,8 +32,8 @@ export const errorHandler = (error: any) => {
       });
     } else if (error.response?.status === 400) {
       Swal.fire({
-        title: "تمامی فیلد ها اجباری هستن",
-        icon: "error",
+        title: "مکانی یافت نشد!",
+        icon: "warning",
         confirmButtonText: "Ok",
       });
     }
