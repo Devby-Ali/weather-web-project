@@ -1,15 +1,61 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoSettingsOutline } from "react-icons/io5";
 import { RxExit } from "react-icons/rx";
 import { IoMoonOutline } from "react-icons/io5";
 import { IoSunnyOutline } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { WeatherContext } from "../../Contexts/WeatherContext";
+import { useEffect } from "react";
+import { useRef } from "react";
+import { searchCities } from "../../services/Axios/Requests/cityService";
+import { WeatherContextType } from "../../Contexts/WeatherContext.type";
 
 const Navbar = (): React.JSX.Element => {
   const [openSetting, setOpenSetting] = useState<boolean>(false);
-  const [openSearch, setOpenSearch] = useState<boolean>(false);
+  const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
   const [dark, setDark] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [suggestions, setSuggestions] = useState<City[]>([]);
+
+  const { setCity } = useContext<WeatherContextType>(WeatherContext);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(async () => {
+      if (searchQuery.length > 2) {
+        const results = await searchCities(searchQuery);
+        setSuggestions(results);
+        setShowSuggestions(true);
+      }
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+        setShowSuggestions(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  interface City {
+    name: string;
+    country: string;
+    lat: number;
+    lon: number;
+  }
+
+  const handleSelectCity = (selectedCity: City): void => {
+    setCity(selectedCity.name);
+    setSearchQuery(selectedCity.name);
+    setShowSuggestions(false);
+  };
 
   const darkModeHandler = (): void => {
     setDark(true);
@@ -36,13 +82,14 @@ const Navbar = (): React.JSX.Element => {
         </div>
         <div className="flex-center gap-x-2 sm:gap-x-5">
           <div
+          ref={wrapperRef}
             className={`relative h-8 sm:h-10 sm:w-[295px] flex items-center justify-between rounded-sm border ${
-              openSearch ? "border-active-blue/50" : "border-zinc-400/50"
+              showSuggestions ? "border-active-blue/50" : "border-zinc-400/50"
             }`}
           >
             <span
               className={`hidden xs:block absolute -top-[9px] left-3 text-xs font-Roboto-light sm:font-Roboto-regular dark:bg-darkPrimary bg-lightPrimary px-[3px] tracking-wide ${
-                openSearch
+                showSuggestions
                   ? "text-active-blue"
                   : "dark:text-zinc-400 text-zinc-500"
               }`}
@@ -53,27 +100,35 @@ const Navbar = (): React.JSX.Element => {
               type="text"
               name=""
               id=""
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full h-full text-xs sm:text-base mb-0.5 ml-[3px] bg-transparent font-Roboto-regular px-2 dark:text-lightText ltr-text outline-none xs:placeholder:text-transparent"
               placeholder="Search your location"
-              onFocus={() => setOpenSearch(true)}
-              onBlur={() => setOpenSearch(false)}
+              onFocus={() => setShowSuggestions(true)}
+              onBlur={() => setShowSuggestions(false)}
             />
             <span
-              onClick={() => setOpenSearch(!openSearch)}
+              onClick={() => setShowSuggestions(!showSuggestions)}
               className={`w-6 h-6 flex-center mr-2 sm:mr-[13px] text-zinc-500 text-xl cursor-pointer ${
-                openSearch && "rotate-180"
+                showSuggestions && "rotate-180"
               }`}
             >
               <IoMdArrowDropdown />
             </span>
-            <ul
-              className={`${
-                openSearch ? "absolute" : "hidden"
-              } top-10 -left-0.5 -right-0.5 rounded-sm dark:text-lightText dark:bg-box-dark bg-white py-3 px-4 shadow-costum space-y-2.5`}
-              dir="ltr"
-            >
-              <li>Menu Item</li>
-            </ul>
+
+            {showSuggestions && suggestions.length > 0 && (
+              <ul className="absolute top-10 -left-0.5 -right-0.5 rounded-sm dark:text-lightText dark:bg-box-dark bg-white py-3 px-4 shadow-costum space-y-2.5">
+                {suggestions.map((city) => (
+                  <li
+                    key={`${city.lat}-${city.lon}`}
+                    className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer"
+                    onMouseDown={() => handleSelectCity(city)}
+                  >
+                    {city.name}, {city.country}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
           <div
             className={`flex-center sm:h-10 sm:w-10 sm:border rounded-lg cursor-pointer text-xl ${
