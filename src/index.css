@@ -3,13 +3,6 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
-  font-family: "yekan";
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/IranYekan/Yekan.woff") format("woff");
-}
-
-@font-face {
   font-family: "Roboto Light";
   font-style: normal;
   font-display: swap;
@@ -37,10 +30,32 @@
 }
 
 @layer base {
+  @font-face {
+    font-family: "Yekan";
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/Yekan/Yekan.woff2") format("woff2");
+  }
+
   :root {
     direction: ltr;
     writing-mode: horizontal-tb;
     text-orientation: mixed;
+    --font-yekan: "Yekan", sans-serif;
+  }
+
+  [dir="rtl"] {
+    --direction: rtl;
+    --text-align: right;
+  }
+
+  html[lang="fa"] * {
+    font-family: var(--font-yekan) !important;
+  }
+
+  body {
+    direction: var(--direction);
+    text-align: var(--text-align);
   }
 
   *,
@@ -69,21 +84,31 @@
   }
 }
 
-@utility filter-shadow-cloud {
-  filter: drop-shadow(-15px 55px 27px rgba(18, 6, 67, 0.4));
-}
-
 @utility flex-center {
   @apply flex items-center justify-center;
 }
 
-@utility ltr-text {
-  direction: ltr;
-  text-align: left;
+@utility rtl {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+@utility ltr {
+  direction: ltr !important;
+  text-align: left !important;
 }
 
 @utility container {
   @apply mx-auto px-4 2xl:px-16 xl:max-w-[1425px] 2xl:max-w-[1700px];
+}
+
+@utility filter-shadow-cloud {
+  filter: drop-shadow(-15px 55px 27px rgba(18, 6, 67, 0.4));
+}
+
+@utility shadow-cloud {
+  filter: drop-shadow(-10px 10px 8px rgba(18, 6, 67, 0.4));
+  @apply z-0
 }
 
 @theme {
@@ -107,7 +132,7 @@
   --shadow-dark: 0px 4px 10px 0px #a6a5a526;
   --shadow-custom: 0px 2px 7px 0px #00000026;
   --radius-4xl: 2rem;
-  --font-yekan: "yekan", "sans-serif";
+  --font-yekan: "Yekan", "sans-serif";
   --font-Roboto-light: "Roboto Light", "sans-serif";
   --font-Roboto-regular: "Roboto Regular", "sans-serif";
   --font-Roboto-bold: "Roboto Bold", "sans-serif";
