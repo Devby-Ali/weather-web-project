@@ -62,7 +62,7 @@ const TemperatureInfo = (): React.JSX.Element => {
         <div className="sm:w-32">
         <img
             src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
-            className="w-full h-full"
+            className="w-full h-full shadow-cloud"
             alt="Weather status"
           />
         </div>

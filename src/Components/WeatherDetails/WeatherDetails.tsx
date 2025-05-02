@@ -60,7 +60,7 @@ const WeatherDetails = (): React.JSX.Element => {
   if (!weatherData) return <div>اطلاعات آب و هوا در دسترس نیست</div>;
 
   return (
-    <section className="flex flex-col justify-between h-82 lg:h-[381px] mt-5 lg:mt-7 pl-4 lg:pl-7 pt-6 pb-[26px] bg-stoneCard dark:bg-[#292F45] rounded-3xl text-darkText dark:text-lightText ltr-text font-Inter-regular shadow-weatherDetails">
+    <section className="flex flex-col justify-between h-82 lg:h-[381px] mt-5 lg:mt-7 pl-4 lg:pl-7 pt-6 pb-[26px] bg-stoneCard dark:bg-[#292F45] rounded-3xl text-darkText dark:text-lightText font-Inter-regular shadow-weatherDetails">
       <h3 className="font-Roboto-light px-3 lg:px-0 sm:font-Inter-regular text-sm sm:text-lg/tight lg:text-2xl/7">
         2 weeks Forecast
       </h3>
