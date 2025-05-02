@@ -1,0 +1,16 @@
+{
+  "login": {
+    "login": "Login",
+    "username": "Username",
+    "password": "Password"
+  },
+  "navbar": {
+    "weather_dashboard": "Weather Dashboard",
+    "searchـyourـlocation": "Search Your Location",
+    "mode": "Mode",
+    "light": "Light",
+    "dark": "Dark",
+    "language": "Language",
+    "exit": "Exit"
+  }
+}

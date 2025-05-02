@@ -1,0 +1,16 @@
+{
+  "login": {
+    "login": "ورود",
+    "username": "نام کاربری",
+    "password": "رمز عبور"
+  },
+  "navbar": {
+    "weather_dashboard": "داشبورد آب و هوا",
+    "searchـyourـlocation": "مکان خود را جستجو کنید",
+    "mode": "حالت",
+    "light": "روشن",
+    "dark": "تاریک",
+    "language": "زبان",
+    "exit": "خروج"
+  }
+}
