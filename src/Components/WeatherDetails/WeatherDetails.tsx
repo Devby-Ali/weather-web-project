@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { WeatherContext } from "../../Contexts/WeatherContext";
 
 const WeatherCards = [
-  { id: 1, img: "/images/svgs/image7.svg", day: "Today", Temp: "28" },
   { id: 2, img: "/images/svgs/image7.svg", day: "Mon", Temp: "31" },
   { id: 3, img: "/images/svgs/image8.svg", day: "Tue", Temp: "33" },
   { id: 4, img: "/images/svgs/image8.svg", day: "Wed", Temp: "35" },
@@ -53,9 +53,17 @@ const WeatherDetails = (): React.JSX.Element => {
     },
   };
 
+  const { weatherData, loading } = useContext(WeatherContext);
+  console.log(weatherData);
+  if (loading) return <div>در حال بارگذاری...</div>;
+
+  if (!weatherData) return <div>اطلاعات آب و هوا در دسترس نیست</div>;
+
   return (
-    <section className="flex flex-col justify-between h-82 lg:h-[381px] mt-7 mb-26 pl-4 lg:pl-7 pt-6 pb-[26px] bg-stoneCard dark:bg-[#292F45] rounded-3xl text-darkText dark:text-lightText ltr-text font-Inter-regular shadow-weatherDetails">
-      <h3 className="font-Roboto-light px-3 lg:px-0 sm:font-Inter-regular text-sm sm:text-lg/tight lg:text-2xl/7">2 weeks Forecast</h3>
+    <section className="flex flex-col justify-between h-82 lg:h-[381px] mt-5 lg:mt-7 pl-4 lg:pl-7 pt-6 pb-[26px] bg-stoneCard dark:bg-[#292F45] rounded-3xl text-darkText dark:text-lightText ltr-text font-Inter-regular shadow-weatherDetails">
+      <h3 className="font-Roboto-light px-3 lg:px-0 sm:font-Inter-regular text-sm sm:text-lg/tight lg:text-2xl/7">
+        2 weeks Forecast
+      </h3>
 
       <Swiper
         breakpoints={breakpoints}
@@ -69,9 +77,31 @@ const WeatherDetails = (): React.JSX.Element => {
           enabled: true,
         }}
       >
+
+<SwiperSlide>
+            <div
+              className="flex items-center flex-col h-53 lg:h-[266px] w-22 lg:w-26 lg:mx-px pt-6 lg:pt-11 bg-[#CDD9E0] dark:bg-[#3F4861] rounded-3xl"
+            >
+              <h2 className="text-sm px-2">Today</h2>
+              <span className="w-16 h-0.5 bg-gradient-to-r from-[#36363600] via-[#7E7E7E] to-[#36363600] rounded-full mt-[11px]"></span>
+
+              <div className="size-18 lg:size-24 flex-center mt-4.5">
+              <img
+            src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
+            className="w-full h-full"
+            alt="Weather status"
+          />
+              </div>
+              <span className="text-lg mt-1.5">{weatherData.main.temp.toFixed(1)}°C</span>
+            </div>
+          </SwiperSlide>
+
         {WeatherCards.map((card) => (
           <SwiperSlide>
-            <div key={card.id} className="flex items-center flex-col h-53 lg:h-[266px] w-22 lg:w-26 lg:mx-px pt-6 lg:pt-11 bg-[#CDD9E0] dark:bg-[#3F4861] rounded-3xl">
+            <div
+              key={card.id}
+              className="flex items-center flex-col h-53 lg:h-[266px] w-22 lg:w-26 lg:mx-px pt-6 lg:pt-11 bg-[#CDD9E0] dark:bg-[#3F4861] rounded-3xl"
+            >
               <h2 className="text-sm px-2">{card.day}</h2>
               <span className="w-16 h-0.5 bg-gradient-to-r from-[#36363600] via-[#7E7E7E] to-[#36363600] rounded-full mt-[11px]"></span>
 

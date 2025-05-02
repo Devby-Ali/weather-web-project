@@ -4,7 +4,7 @@ import { LuCalendarDays } from "react-icons/lu";
 
 const Footer = (): React.JSX.Element => {
   return (
-    <footer className="flex flex-col lg:flex-row px-6 lg:items-center justify-center lg:justify-between w-full h-26 bg-gradient-to-r dark:from-[#292F45] dark:via-[#3F4861] dark:to-[#151D32] from-[#F3FAFE] via-[#CCDDDD9E] to-[#F3FAFE] text-darkText dark:text-lightText">
+    <footer className="flex flex-col lg:flex-row mt-25 px-6 lg:items-center justify-center lg:justify-between w-full h-26 bg-gradient-to-r dark:from-[#292F45] dark:via-[#3F4861] dark:to-[#151D32] from-[#F3FAFE] via-[#CCDDDD9E] to-[#F3FAFE] text-darkText dark:text-lightText">
       <div className="flex items-center gap-x-3">
         <img src="/images/svgs/icon-copy-1.png" alt="" />
         <span className="ltr-text mb-1 text-xs lg:text-sm">

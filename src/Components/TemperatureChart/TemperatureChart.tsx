@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Line,
   XAxis,
@@ -9,6 +9,8 @@ import {
   Area,
   ComposedChart,
 } from "recharts";
+import { WeatherContext } from "../../Contexts/WeatherContext";
+import { getMonthlyAverage } from "../../services/Axios/Requests/weatherService";
 
 // const monthlyTemperatureData = [
 //   { month: "فروردین", temp: 15 },
@@ -41,6 +43,7 @@ const monthlyTemperatureData = [
 ];
 
 const TemperatureChart = (): React.JSX.Element => {
+  
   return (
     <section className="h-[237px] lg:w-1/2 xl:w-4/7 flex flex-col justify-between px-6 sm:px-4 pt-4 pb-5.5 ltr-text font-Roboto-light sm:font-Inter-regular">
       <h3 className="text-sm sm:text-lg/tight text-darkText dark:text-lightText">

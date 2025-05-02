@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import { useRoutes } from "react-router-dom";
 import routes from "./routes";
-import { useEffect } from "react";
+import { WeatherProvider } from "./Contexts/WeatherContext";
 
 
 
@@ -13,7 +14,11 @@ const App = (): React.JSX.Element => {
     }
   }, []);
   const router = useRoutes(routes);
-  return <>{router}</>;
+  return (
+    <WeatherProvider>
+      {router}
+    </WeatherProvider>
+  );
 }
 
 export default App;
