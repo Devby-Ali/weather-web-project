@@ -17,16 +17,14 @@ const TemperatureInfo = (): React.JSX.Element => {
   };
 
   const currentTime = () => {
-    
-    const timeOptions: Intl.DateTimeFormatOptions = { 
-      hour: "numeric", 
-      minute: "2-digit", 
-      hour12: true 
+    const timeOptions: Intl.DateTimeFormatOptions = {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
     };
-    
-    return date.toLocaleTimeString('en-US', timeOptions);
-    
-  }
+
+    return date.toLocaleTimeString("en-US", timeOptions);
+  };
 
   if (loading) return <div>در حال بارگذاری...</div>;
 
@@ -60,12 +58,18 @@ const TemperatureInfo = (): React.JSX.Element => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-end max-w-48 xs:mr-3 xs:mt-1.5 font-Inter-regular">
-        <div className="w-28 h-21 sm:h-auto sm:w-auto">
-          <img src="/images/svgs/image7.svg" alt="img" />
+      <div className="flex flex-col items-end max-w-48 font-Inter-regular">
+        <div className="sm:w-32">
+        <img
+            src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
+            className="w-full h-full"
+            alt="Weather status"
+          />
         </div>
-        <div className="sm:-ml-5 mt-6 xs:mt-2 flex flex-col">
-          <span className="text-lg sm:text-3xl text-center text-wrap">{weatherData.weather[0].description}</span>
+        <div className="sm:-ml-5 xs:mt-2 flex flex-col">
+          <span className="text-lg sm:text-2xl text-center text-wrap">
+            {weatherData.weather[0].description}
+          </span>
           <span className="text-xs sm:text-base mt-[1px]">
             Feels Like {weatherData.main.feels_like.toFixed(1)}
           </span>
