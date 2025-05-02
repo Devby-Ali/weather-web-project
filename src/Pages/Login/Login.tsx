@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { HiOutlineChevronDown } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Login = (): React.JSX.Element => {
   const navigate = useNavigate();
@@ -9,6 +10,9 @@ const Login = (): React.JSX.Element => {
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
   const [language, setLanguage] = useState<string>("English");
   const [languageShow, setLanguageShow] = useState<boolean>(false);
+
+  const { t, i18n } = useTranslation();
+  
 
   useEffect(() => {
     if (localStorage.theme === "dark") {
@@ -38,11 +42,11 @@ const Login = (): React.JSX.Element => {
 
   useEffect(() => {
     if (username.length >= 3 && password.length >= 10) {
-      setIsFormValid(true)
+      setIsFormValid(true);
     } else {
-      setIsFormValid(false)
+      setIsFormValid(false);
     }
-  }, [username, password])
+  }, [username, password]);
 
   return (
     <>
@@ -53,7 +57,7 @@ const Login = (): React.JSX.Element => {
               <div className="flex w-8/10 sm:w-6/10 md:w-5/10 flex-col justify-between h-90 mb-1.5">
                 <div>
                   <h3 className="text-[26px] font-Roboto-bold text-darkText dark:text-lightText text-center mb-12">
-                    Login
+                    {t("login.login")}
                   </h3>
 
                   <div className="flex flex-col gap-y-7">
@@ -68,7 +72,7 @@ const Login = (): React.JSX.Element => {
                           ? "border-green-500 dark:border-emerald-400/60 text-green-500 dark:text-emerald-400"
                           : "border-zinc-500/60 text-red-300"
                       }`}
-                      placeholder="Enter Your Username"
+                      placeholder={t("login.username")}
                     />
 
                     <input
@@ -82,17 +86,19 @@ const Login = (): React.JSX.Element => {
                           ? "border-green-500 dark:border-emerald-400/60 text-green-500 dark:text-emerald-400"
                           : "border-zinc-500/60 text-red-300"
                       }`}
-                      placeholder="Enter Your Password"
+                      placeholder={t("login.password")}
                     />
                   </div>
                 </div>
 
                 <button
-                  className={`h-10.5 text-lightText w-full rounded-sm shadow-md ${isFormValid ? 'bg-sky-600 cursor-pointer' : 'bg-zinc-600/60'}`}
+                  className={`h-10.5 text-lightText w-full rounded-sm shadow-md ${
+                    isFormValid ? "bg-sky-600 cursor-pointer" : "bg-zinc-600/60"
+                  }`}
                   onClick={userLogin}
                   disabled={!isFormValid}
                 >
-                  LOGIN
+                  {t("login.login")}
                 </button>
               </div>
             </form>
@@ -153,12 +159,14 @@ const Login = (): React.JSX.Element => {
             } flex-col items-start w-full rounded-b-sm text-darkText dark:text-lightText bg-white dark:bg-box-dark space-y-0.5`}
           >
             <li
+              onClick={() => i18n.changeLanguage("en")}
               value={"En"}
               className="w-full py-1 px-3 hover:bg-stoneCard dark:hover:bg-white/15 cursor-pointer"
             >
               English
             </li>
             <li
+              onClick={() => i18n.changeLanguage("fa")}
               value={"Fa"}
               className="w-full py-1 px-3 hover:bg-stoneCard dark:hover:bg-white/15 cursor-pointer"
             >
