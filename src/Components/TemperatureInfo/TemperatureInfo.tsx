@@ -1,30 +1,18 @@
 import React, { useContext } from "react";
 import { IoLocation } from "react-icons/io5";
 import { WeatherContext } from "../../Contexts/WeatherContext";
+import {
+  getFormattedDateTime,
+  toPersianNumbers,
+  formatTemp,
+} from "../../utils/dateService";
+import i18n from "../../i18n";
 
 const TemperatureInfo = (): React.JSX.Element => {
   const { weatherData, loading } = useContext(WeatherContext);
   console.log(weatherData);
 
-  const date = new Date();
-  const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
-
-  const currentDate = () => {
-    const day = date.getDate();
-    const month = date.toLocaleString("default", { month: "short" });
-    const year = date.getFullYear();
-    return `${day} ${month}, ${year}`;
-  };
-
-  const currentTime = () => {
-    const timeOptions: Intl.DateTimeFormatOptions = {
-      hour: "numeric",
-      minute: "2-digit",
-      hour12: true,
-    };
-
-    return date.toLocaleTimeString("en-US", timeOptions);
-  };
+  const { dayName, fullDate, time, dayMonth } = getFormattedDateTime();
 
   if (loading) return <div>در حال بارگذاری...</div>;
 
@@ -35,26 +23,42 @@ const TemperatureInfo = (): React.JSX.Element => {
       <div>
         <span className="flex-center w-max text-lg sm:text-2xl font-Inter-regular text-[#3D4852] bg-[#CDD9E0] rounded-4xl h-8 sm:h-10 px-3.5">
           <IoLocation className="-mx-1" />
-          <span className="text-sm sm:text-base px-3">{weatherData.name}</span>
+          <span
+            className={`text-sm sm:text-base px-3 ${
+              i18n.language === "fa" && "mb-1"
+            }`}
+          >
+            {weatherData.name}
+          </span>
         </span>
         <div className="mt-3 sm:mt-3.5">
-          <span className="text-2xl sm:text-[32px]">{dayName}</span>
-          <div className="flex text-xs sm:text-[14px]/4 font-Roboto-light gap-x-2.5 sm:gap-x-5 mt-0.5 sm:mt-0">
-            <span>{currentDate()}</span>
-            <span>{currentTime()}</span>
+          <span className="text-2xl sm:text-[32px] font-bold"> {dayName}</span>
+          <div className="flex text-xs sm:text-[14px] font-Roboto-light sm:font-Roboto-regular gap-x-2.5 sm:gap-x-5 mt-0.5 sm:mt-0 ltr">
+            <div className="flex-center gap-x-1">
+              <span>{fullDate}</span>
+              <span>{dayMonth}</span>
+            </div>
+
+            <span>{time}</span>
           </div>
         </div>
         <div className="mt-3 sm:mt-3">
-          <div className="flex items-center gap-x-1 sm:gap-x-2">
-            <span className="text-2xl sm:text-[40px]">
-              {weatherData.main.temp.toFixed(1)}
+          <div className="flex items-center ltr gap-x-1 sm:gap-x-2 w-min">
+            <span className="text-2xl sm:text-[40px] font-bold">
+              {formatTemp(weatherData.main.temp)}
             </span>
             <span className="inline-block w-2 sm:w-4 h-2 sm:h-4 rounded-full border-2 sm:border-[3px] border-darkText dark:border-lightText mb-4.5 sm:mr-1"></span>
-            <span className="text-2xl sm:text-[40px]">C</span>
+            <span className={`text-2xl sm:text-[40px] ${i18n.language === "en" && "font-bold"}`}>C</span>
           </div>
           <div className="flex text-xs sm:text-[14px] gap-x-3 sm:-mt-1 font-Roboto-light sm:font-Roboto-regular">
-            <span>High: {Math.round(weatherData.main.temp_max)}</span>
-            <span>Low: {Math.round(weatherData.main.temp_min)}</span>
+            <span>
+              {i18n.language === "fa" ? "بیشینه" : "High"}:{" "}
+              {formatTemp(weatherData.main.temp_max)}
+            </span>
+            <span>
+              {i18n.language === "fa" ? "کمینه" : "Low"}:{" "}
+              {formatTemp(weatherData.main.temp_min)}
+            </span>
           </div>
         </div>
       </div>
@@ -66,13 +70,14 @@ const TemperatureInfo = (): React.JSX.Element => {
             alt="Weather status"
           />
         </div>
-        <div className="sm:-ml-5 xs:mt-2 flex flex-col">
-          <span className="text-lg sm:text-2xl text-center text-wrap">
+        <div className="xs:mt-1 flex flex-col">
+          <span className={` text-center text-wrap ${i18n.language === "fa" ? "sm:text-xl" : "text-lg sm:text-2xl"}`}>
             {weatherData.weather[0].description}
           </span>
-          <span className="text-xs sm:text-base mt-[1px]">
-            Feels Like {weatherData.main.feels_like.toFixed(1)}
-          </span>
+          <div className={`flex gap-x-1.5 text-xs sm:text-base mt-[9px] ${i18n.language === "fa" && "justify-end "}`}>
+            <span>{i18n.language === "fa" ? "درجه احساس میشود" : "Feels Like"}</span>
+            <span>{formatTemp(weatherData.main.feels_like)}</span>
+          </div>
         </div>
       </div>
     </section>
