@@ -33,9 +33,9 @@ const TemperatureInfo = (): React.JSX.Element => {
   return (
     <section className="flex lg:w-1/2 xl:w-3/7 justify-between px-6 py-5 shadow-custom text-darkText dark:text-lightText  font-Roboto-regular">
       <div>
-        <span className="flex-center gap-x-2 w-max text-sm sm:text-base font-Inter-regular text-[#3D4852] bg-[#CDD9E0] rounded-4xl h-8 sm:h-10 pl-2.5 pr-5 sm:pr-6">
-          <IoLocation className="text-lg sm:text-2xl" />
-          {weatherData.name}
+        <span className="flex-center w-max text-lg sm:text-2xl font-Inter-regular text-[#3D4852] bg-[#CDD9E0] rounded-4xl h-8 sm:h-10 px-3.5">
+          <IoLocation className="-mx-1" />
+          <span className="text-sm sm:text-base px-3">{weatherData.name}</span>
         </span>
         <div className="mt-3 sm:mt-3.5">
           <span className="text-2xl sm:text-[32px]">{dayName}</span>
@@ -60,7 +60,7 @@ const TemperatureInfo = (): React.JSX.Element => {
       </div>
       <div className="flex flex-col items-end max-w-48 font-Inter-regular">
         <div className="sm:w-32">
-        <img
+          <img
             src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
             className="w-full h-full shadow-cloud"
             alt="Weather status"

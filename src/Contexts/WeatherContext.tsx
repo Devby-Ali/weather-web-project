@@ -1,6 +1,13 @@
-import React, { useState, useEffect, ReactNode, createContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  ReactNode,
+  createContext,
+  useCallback,
+} from "react";
 import { getCurrentWeather } from "../services/Axios/Requests/weatherService";
 import { WeatherContextType } from "./WeatherContext.type";
+import { useTranslation } from "react-i18next";
 
 const WeatherContext = createContext<WeatherContextType>({
   city: "",
@@ -14,12 +21,12 @@ export const WeatherProvider = ({
 }: {
   children: ReactNode;
 }): React.JSX.Element => {
-
+  const { i18n } = useTranslation();
   const [city, setCity] = useState("Tehran");
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const fetchWeather = async () => {
+  const fetchWeather = useCallback(async () => {
     try {
       setLoading(true);
       const data = await getCurrentWeather(city);
@@ -29,11 +36,11 @@ export const WeatherProvider = ({
     } finally {
       setLoading(false);
     }
-  };
+  }, [city, i18n.language]);
 
   useEffect(() => {
     fetchWeather();
-  }, [city]);
+  }, [fetchWeather]);
 
   return (
     <WeatherContext.Provider value={{ city, setCity, weatherData, loading }}>

@@ -77,7 +77,7 @@ const Navbar = (): React.JSX.Element => {
 
   return (
     <>
-      <header className="relative ltr flex justify-between h-20 bg-lightPrimary dark:bg-darkPrimary shadow-header dark:shadow-dark px-4 sm:px-6 tracking-wide">
+      <header className="relative flex justify-between h-20 bg-lightPrimary dark:bg-darkPrimary shadow-header dark:shadow-dark px-4 sm:px-6 tracking-wide">
         <div className="flex-center gap-x-2">
           <div className="w-11 sm:w-14 h-11 sm:h-14 rounded-full overflow-hidden">
             <img src="/images/image1.jpg" alt="" />
@@ -115,7 +115,7 @@ const Navbar = (): React.JSX.Element => {
             />
             <span
               onClick={() => setShowSuggestions(!showSuggestions)}
-              className={`w-6 h-6 flex-center mx-2 sm:mr-[13px] text-zinc-500 text-xl cursor-pointer ${
+              className={`w-6 h-6 flex-center mx-2 sm:mx-[13px] text-zinc-500 text-xl cursor-pointer ${
                 showSuggestions && "rotate-180"
               }`}
             >
@@ -151,7 +151,7 @@ const Navbar = (): React.JSX.Element => {
       <div
         className={`${
           openSetting ? "absolute" : "hidden"
-        } right-0 w-[220px] mr-[25px] -mt-3.5 z-10 shadow-header dark:shadow-dark bg-white dark:bg-box-dark rounded-lg px-4 py-[13px] divide-y divide-zinc-200 dark:divide-white/15 font-Roboto-regular`}
+        } ${i18n.language === "fa" ? "left-0 ml-[25px]" : "right-0 mr-[25px]"} w-[220px] -mt-3.5 z-10 shadow-header dark:shadow-dark bg-white dark:bg-box-dark rounded-lg px-4 py-[13px] divide-y divide-zinc-200 dark:divide-white/15 font-Roboto-regular`}
       >
         <div className="pb-3 mb-4">
           <span className="dark:text-lightText tracking-wide">
@@ -212,7 +212,7 @@ const Navbar = (): React.JSX.Element => {
           <RxExit className="text-lg" />
           <span
             className={`dark:text-lightText ${
-              i18n.language === "fa" && "mb-1"
+              i18n.language === "fa" && "mb-1 -mt-1"
             }`}
           >
             {t("navbar.exit")}
