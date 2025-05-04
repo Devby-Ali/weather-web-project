@@ -7,6 +7,7 @@ import {
   formatTemp,
 } from "../../utils/dateService";
 import i18n from "../../i18n";
+import { useTranslation } from "react-i18next";
 
 const TemperatureInfo = (): React.JSX.Element => {
   const { weatherData, loading } = useContext(WeatherContext);
@@ -14,24 +15,26 @@ const TemperatureInfo = (): React.JSX.Element => {
 
   const { dayName, fullDate, time, dayMonth } = getFormattedDateTime();
 
+  const { t } = useTranslation()
+
   if (loading) return <div>در حال بارگذاری...</div>;
 
   if (!weatherData) return <div>اطلاعات آب و هوا در دسترس نیست</div>;
 
   return (
-    <section className="flex lg:w-1/2 xl:w-3/7 h-min justify-between px-6 py-5 shadow-custom text-darkText dark:text-lightText font-Roboto-regular">
+    <section className="flex lg:w-1/2 xl:w-3/7 h-min justify-between px-6 pt-5 pb-4.5 shadow-custom text-darkText dark:text-lightText font-Roboto-regular">
       <div>
         <span className="flex-center w-max text-lg sm:text-2xl font-Inter-regular text-[#3D4852] bg-[#CDD9E0] rounded-4xl h-8 sm:h-10 px-3.5">
           <IoLocation className="-mx-1" />
           <span
             className={`text-sm sm:text-base px-3 ${
-              i18n.language === "fa" && "mb-1"
+              i18n.language === "fa" && "mb-0.5"
             }`}
           >
             {weatherData.name}
           </span>
         </span>
-        <div className="mt-3 sm:mt-2.5">
+        <div className="mt-3 sm:mt-3">
           <span className="text-2xl sm:text-[32px] font-bold"> {dayName}</span>
           <div className={`flex font-Roboto-light sm:font-Roboto-regular gap-x-2.5 sm:gap-x-5 mt-0.5 sm:mt-0 ltr ${i18n.language === "fa" ? "text-sm sm:text-[15px]" : " text-xs sm:text-sm"}`}>
             <div className="flex-center gap-x-1">
@@ -76,8 +79,8 @@ const TemperatureInfo = (): React.JSX.Element => {
           <span className={`text-center text-wrap ${i18n.language === "fa" ? "sm:text-xl" : "text-lg sm:text-2xl"}`}>
             {weatherData.weather[0].description}
           </span>
-          <div className={`flex gap-x-1.5 text-xs sm:text-base mt-2.5 ${i18n.language === "fa" && "flex-row-reverse"}`}>
-            <span>{i18n.language === "fa" ? "درجه احساس میشود" : "Feels Like"}</span>
+          <div className={`flex gap-x-1.5 mt-2.5 text-xs ${i18n.language === "fa" ? "sm:text-sm" : "sm:text-base"}`}>
+            <span>{t("temperatureInfo.feels_like")}</span>
             <span>{formatTemp(weatherData.main.feels_like)}</span>
           </div>
         </div>
