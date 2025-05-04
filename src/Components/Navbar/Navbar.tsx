@@ -86,10 +86,10 @@ const Navbar = (): React.JSX.Element => {
             {t("navbar.weather_dashboard")}
           </span>
         </div>
-        <div className="flex-center gap-x-2 sm:gap-x-5">
+        <div className="flex-center">
           <div
             ref={wrapperRef}
-            className={`relative h-8 sm:h-10 sm:w-[295px] flex items-center justify-between rounded-sm border ${
+            className={`relative h-8 sm:h-10 mx-4 sm:mx-5 sm:w-[295px] flex items-center justify-between rounded-sm border ${
               showSuggestions ? "border-active-blue/50" : "border-zinc-400/50"
             } ${i18n.language === "fa" && "rtl"}`}
           >
