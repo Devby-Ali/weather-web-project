@@ -4,6 +4,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { WeatherContext } from "../../Contexts/WeatherContext";
+import { useTranslation } from "react-i18next";
+import { toPersianNumbers } from "../../utils/dateService";
 
 const WeatherCards = [
   { id: 2, img: "/images/svgs/image7.svg", day: "Mon", Temp: "31" },
@@ -53,6 +55,10 @@ const WeatherDetails = (): React.JSX.Element => {
     },
   };
 
+  const { t, i18n } = useTranslation();
+
+  const isPersian = i18n.language === "fa";
+
   const { weatherData, loading } = useContext(WeatherContext);
   console.log(weatherData);
   if (loading) return <div>در حال بارگذاری...</div>;
@@ -60,9 +66,19 @@ const WeatherDetails = (): React.JSX.Element => {
   if (!weatherData) return <div>اطلاعات آب و هوا در دسترس نیست</div>;
 
   return (
-    <section className="flex flex-col justify-between h-82 lg:h-[381px] mt-5 lg:mt-7 pl-4 lg:pl-7 pt-6 pb-[26px] bg-stoneCard dark:bg-[#292F45] rounded-3xl text-darkText dark:text-lightText font-Inter-regular shadow-weatherDetails">
-      <h3 className="font-Roboto-light px-3 lg:px-0 sm:font-Inter-regular text-sm sm:text-lg/tight lg:text-2xl/7">
-        2 weeks Forecast
+    <section
+      className={`flex flex-col justify-between h-82 lg:h-[381px] mt-5 lg:mt-7 pb-[26px] bg-stoneCard dark:bg-[#292F45] rounded-3xl text-darkText dark:text-lightText font-Inter-regular shadow-weatherDetails ${
+        isPersian ? "pr-4 lg:pr-5 pt-6" : "pl-4 lg:pl-6.5 pt-5.5"
+      }`}
+    >
+      <h3
+        className={`font-Inter-regular px-3 sm:font-Inter-semiBlod text-sm ${
+          isPersian
+            ? "sm:text-xl lg:text-[26px] tracking-wide lg:px-5"
+            : "sm:text-lg lg:text-2xl lg:px-0.5"
+        }`}
+      >
+        {t("weatherDetails.2_weeks_forecast")}
       </h3>
 
       <Swiper
@@ -71,30 +87,33 @@ const WeatherDetails = (): React.JSX.Element => {
         spaceBetween={15}
         navigation={false}
         pagination={{ clickable: true }}
-        className="!pt-9"
+        className={`${isPersian ? "!pt-7" : "!pt-8.5"}`}
         touch={{
           grabCursor: true,
           enabled: true,
         }}
       >
+        <SwiperSlide>
+          <div className="flex items-center flex-col h-53 lg:h-[266px] w-22 lg:w-26 lg:mx-px pt-6 lg:pt-11 bg-[#CDD9E0] dark:bg-[#3F4861] rounded-3xl">
+            <h2 className="text-sm px-2">{t("weatherDetails.today")}</h2>
+            <span className="w-16 h-0.5 bg-gradient-to-r from-[#36363600] via-[#7E7E7E] to-[#36363600] rounded-full mt-[11px]"></span>
 
-<SwiperSlide>
-            <div
-              className="flex items-center flex-col h-53 lg:h-[266px] w-22 lg:w-26 lg:mx-px pt-6 lg:pt-11 bg-[#CDD9E0] dark:bg-[#3F4861] rounded-3xl"
-            >
-              <h2 className="text-sm px-2">Today</h2>
-              <span className="w-16 h-0.5 bg-gradient-to-r from-[#36363600] via-[#7E7E7E] to-[#36363600] rounded-full mt-[11px]"></span>
-
-              <div className="size-18 lg:size-24 flex-center mt-4.5">
+            <div className="size-18 lg:size-24 flex-center mt-4.5">
               <img
-            src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
-            className="w-full h-full"
-            alt="Weather status"
-          />
-              </div>
-              <span className="text-lg mt-1.5">{weatherData.main.temp.toFixed(1)}°C</span>
+                src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
+                className="w-full h-full"
+                alt="Weather status"
+              />
             </div>
-          </SwiperSlide>
+            <div className="flex items-end ltr">
+                <span className="text-lg mt-1.5">
+                  {isPersian ? toPersianNumbers(Math.round(weatherData.main.temp)) : Math.round(weatherData.main.temp)}
+                </span>
+                <span className="inline-block w-[5px] h-[5px] rounded-full border border-darkText dark:border-lightText mb-3.5 mx-[1px]"></span>
+                <span className="mb-0.5">C</span>
+              </div>
+          </div>
+        </SwiperSlide>
 
         {WeatherCards.map((card) => (
           <SwiperSlide>
@@ -102,13 +121,19 @@ const WeatherDetails = (): React.JSX.Element => {
               key={card.id}
               className="flex items-center flex-col h-53 lg:h-[266px] w-22 lg:w-26 lg:mx-px pt-6 lg:pt-11 bg-[#CDD9E0] dark:bg-[#3F4861] rounded-3xl"
             >
-              <h2 className="text-sm px-2">{card.day}</h2>
+              <h2 className="text-sm px-2">{t(`week.${card.day}`)}</h2>
               <span className="w-16 h-0.5 bg-gradient-to-r from-[#36363600] via-[#7E7E7E] to-[#36363600] rounded-full mt-[11px]"></span>
 
               <div className="size-12 lg:size-17.5 flex-center mt-6.5">
                 <img src={card.img} alt="" />
               </div>
-              <span className="text-lg mt-5.5">{card.Temp}°C</span>
+              <div className="flex items-end ltr">
+                <span className="text-lg mt-5.5">
+                  {isPersian ? toPersianNumbers(card.Temp) : card.Temp}
+                </span>
+                <span className="inline-block w-[5px] h-[5px] rounded-full border border-darkText dark:border-lightText mb-3.5 mx-[1px]"></span>
+                <span className="mb-0.5">C</span>
+              </div>
             </div>
           </SwiperSlide>
         ))}
