@@ -15,6 +15,7 @@
   font-display: swap;
   src: url("/fonts/Roboto/roboto-regular.woff") format("woff");
 }
+
 @font-face {
   font-family: "Roboto Bold";
   font-style: normal;
@@ -27,6 +28,13 @@
   font-style: normal;
   font-display: swap;
   src: url("/fonts/Inter/Inter-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter SemiBold";
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/Inter/Inter-SemiBold.woff2") format("woff2");
 }
 
 @layer base {
@@ -137,6 +145,7 @@
   --font-Roboto-regular: "Roboto Regular", "sans-serif";
   --font-Roboto-bold: "Roboto Bold", "sans-serif";
   --font-Inter-regular: "Inter Regular", "sans-serif";
+  --font-Inter-semiBlod: "Inter SemiBold", "sans-serif";
   --breakpoint-xs: 480px;
 }
 
