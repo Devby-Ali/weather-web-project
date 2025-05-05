@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import {
   Line,
@@ -40,7 +40,7 @@ const TemperatureChart = (): React.JSX.Element => {
 
   return (
     <section
-      className={`h-[234px] lg:w-1/2 xl:w-[56%] flex flex-col justify-between pt-3 pb-5.5 font-Inter-regular sm:font-Inter-regular`}
+      className={`h-[234px] lg:w-1/2 xl:w-56/100 flex flex-col justify-between pt-3 pb-5.5 font-Inter-regular sm:font-Inter-regular`}
     >
       <h3
         className={`text-darkText dark:text-lightText sm:font-Inter-semiBlod px-6 sm:px-4 ${

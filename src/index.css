@@ -107,7 +107,7 @@
 }
 
 @utility container {
-  @apply mx-auto px-4 2xl:px-16 xl:max-w-[1425px] 2xl:max-w-[1700px];
+  @apply mx-auto px-4 2xl:px-16 xl:max-w-[1425px] 2xl:max-w-[1850px];
 }
 
 @utility filter-shadow-cloud {
@@ -152,14 +152,3 @@
 .dark .recharts-cartesian-axis-tick text {
   fill: #f3f4f7 !important;
 }
-/* 
-spacing: {
-  4.5: "1.125rem",
-  25: "6.25rem",
-  30: "7.5rem",
-  50: "12.5rem",
-}, */
-
-/* colors: {
-  gradientCostum: "linear-gradient(90deg, rgba(54, 54, 54, 0) 0%, #7E7E7E 48.5%, rgba(54, 54, 54, 0) 100%)"
-} */

@@ -22,7 +22,6 @@ i18n
     }
   });
 
-// تغییر خودکار جهت صفحه
 i18n.on('languageChanged', (lng) => {
   document.documentElement.dir = lng === 'fa' ? 'rtl' : 'ltr';
   document.documentElement.lang = lng;

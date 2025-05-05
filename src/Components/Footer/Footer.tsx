@@ -30,7 +30,7 @@ const Footer = (): React.JSX.Element => {
             <span className="mx-1">{dayName}</span>
             <div className="flex-center ltr gap-x-1">
               <span>{fullDate}</span>
-              {i18n.language === "fa" && <span>{dayMonth}</span>}
+              {isPersian && <span>{dayMonth}</span>}
             </div>
           </div>
         </div>

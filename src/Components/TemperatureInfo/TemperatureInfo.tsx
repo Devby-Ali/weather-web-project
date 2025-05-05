@@ -3,7 +3,6 @@ import { IoLocation } from "react-icons/io5";
 import { WeatherContext } from "../../Contexts/WeatherContext";
 import {
   getFormattedDateTime,
-  toPersianNumbers,
   formatTemp,
 } from "../../utils/dateService";
 import i18n from "../../i18n";
@@ -22,7 +21,7 @@ const TemperatureInfo = (): React.JSX.Element => {
   if (!weatherData) return <div>اطلاعات آب و هوا در دسترس نیست</div>;
 
   return (
-    <section className="flex lg:w-1/2 xl:w-[44%] h-min justify-between px-6 pt-5 pb-4.5 shadow-custom text-darkText dark:text-lightText font-Roboto-regular">
+    <section className="flex lg:w-1/2 xl:w-44/100 h-min justify-between px-6 pt-5 pb-4.5 shadow-custom text-darkText dark:text-lightText font-Roboto-regular">
       <div>
         <span className="flex-center w-max text-lg sm:text-2xl font-Inter-regular text-[#3D4852] bg-[#CDD9E0] rounded-4xl h-8 sm:h-10 px-3.5">
           <IoLocation className="-mx-1" />
