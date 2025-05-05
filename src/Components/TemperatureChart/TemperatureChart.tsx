@@ -32,7 +32,7 @@ const TemperatureChart = (): React.JSX.Element => {
 
   const isPersian = i18n.language === "fa";
 
-  // تبدیل ماهها به زبان انتخابی
+  
   const localizedData = monthlyTemperatureData.map((item) => ({
     ...item,
     month: getLocalizedMonth(item.month, isPersian),
@@ -40,7 +40,7 @@ const TemperatureChart = (): React.JSX.Element => {
 
   return (
     <section
-      className={`h-[234px] lg:w-1/2 xl:w-4/7 flex flex-col justify-between pt-3 pb-5.5 font-Roboto-light sm:font-Inter-regular`}
+      className={`h-[234px] lg:w-1/2 xl:w-[56%] flex flex-col justify-between pt-3 pb-5.5 font-Inter-regular sm:font-Inter-regular`}
     >
       <h3
         className={`text-darkText dark:text-lightText sm:font-Inter-semiBlod px-6 sm:px-4 ${
@@ -85,11 +85,11 @@ const TemperatureChart = (): React.JSX.Element => {
             tick={{
               fill: "#000",
               dy: isPersian ? 6 : 12,
+              dx: isPersian ? -30 : 10,
               textAnchor: "end",
             }}
             padding={{
-              left: isPersian? 0 : 15,
-              right: isPersian ? 35 : 0 
+              left: isPersian ? 30 : 0,
             }}
             reversed={isPersian}
           />
