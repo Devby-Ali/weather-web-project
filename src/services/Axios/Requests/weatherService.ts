@@ -12,8 +12,8 @@ export const getCurrentWeather = async (city: string) => {
       params: {
         q: city,
         appid: API_KEY,
-        units: 'metric', // برای دمای سلسیوس
-        lang: currentLang // اختیاری - برای توضیحات فارسی
+        units: 'metric', 
+        lang: currentLang
       }
     });
     return response.data;
